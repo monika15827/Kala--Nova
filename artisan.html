@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="#f7f5ef" name="theme-color"/>
+<title>KalaNova — Artisan Studio</title>
+<link href="style.css" rel="stylesheet"/>
+<script defer="" src="script.js?v=pricing-fix-20261020"></script>
+</head>
+<body>
+<div class="announcement">A home for handmade stories <span>·</span> Discover independent Indian artisans</div>
+<header class="site-header">
+<a aria-label="KalaNova home" class="brand" href="index.html"><img src="assets/kalanova-logo.png" alt="KalaNova — Made by Hand"/></a>
+<nav aria-label="Main navigation" class="main-nav">
+<a href="index.html">Home</a><a href="index.html#shop">Shop crafts</a><a href="index.html#stories">Artisan stories</a><a href="index.html#about">Our purpose</a>
+<a href="artisan.html#artisan-dashboard">Artisan Studio</a></nav>
+<div class="header-actions">
+<button aria-label="Focus search" class="icon-button" id="open-search">⌕</button>
+<button aria-label="Open favorites" class="icon-button" id="open-favorites">♡ <span class="count" id="favorite-count">0</span></button>
+<button aria-label="Open cart" class="icon-button cart-trigger" id="open-cart">Bag <span class="count" id="cart-count">0</span></button>
+<button aria-label="Toggle menu" class="menu-toggle" id="menu-toggle">☰</button>
+</div>
+</header>
+<main><section class="hero" style="padding:34px 7% 12px;min-height:auto"><div class="hero-copy"><p class="eyebrow">YOUR KALANOVA WORKSPACE</p><h1>Everything for <em>your craft.</em></h1><p class="hero-description">Manage your artisan profile, prepare product listings, plan prices, and track your inventory in one place.</p></div></section>
+<section class="dashboard-section section-pad" id="artisan-dashboard">
+<div class="section-heading"><div><p class="eyebrow">ARTISAN STUDIO</p><h2>Your craft, <em>your space.</em></h2><p class="muted">Manage your story, handmade pieces and stock in one place.</p></div></div>
+<div class="artisan-overview">
+<div class="overview-card"><span class="overview-icon">✳</span><div><small>YOUR LISTINGS</small><strong id="artisan-product-count">0</strong></div></div>
+<div class="overview-card"><span class="overview-icon">▤</span><div><small>TOTAL STOCK</small><strong id="total-stock">0</strong></div></div>
+<div class="overview-card"><span class="overview-icon">₹</span><div><small>STOCK VALUE</small><strong id="stock-value">₹0</strong></div></div>
+</div>
+<div class="dashboard-layout">
+<div class="dashboard-intro">
+<div class="dashboard-icon">✳</div><h3>Your artisan profile</h3><p>Tell customers who you are, where your craft comes from, and what makes your work special.</p>
+<div class="profile-avatar-wrap"><div class="profile-avatar" id="profile-avatar">✳</div><p class="profile-preview-note">Your maker identity on KalaNova</p></div>
+<form class="profile-form" id="artisan-profile-form">
+<label>Artisan / studio name *<input id="profile-name" maxlength="70" placeholder="e.g. Meera Clay Studio" required=""/></label>
+<label>Craft tradition<input id="profile-craft" maxlength="80" placeholder="e.g. Hand-thrown pottery"/></label>
+<label>Location<input id="profile-location" maxlength="100" placeholder="City, state"/></label>
+<label>Your story<textarea id="profile-story" maxlength="500" placeholder="Share a little about your craft and inspiration..." rows="4"></textarea></label>
+<label>Profile image<input accept="image/*" id="profile-image" type="file"/><span class="input-hint">Optional portrait or studio image · up to 2 MB</span></label>
+<div class="image-preview-wrap" hidden="" id="profile-image-preview-wrap"><img alt="Artisan profile preview" class="image-preview" id="profile-image-preview"/></div>
+<button class="button button-dark" type="submit">Save artisan profile <span>↗</span></button><p class="form-message" id="profile-message" role="status"></p>
+</form>
+</div>
+<form class="product-form" id="product-form">
+<div class="form-heading"><h3 id="product-form-title">Add a new piece</h3><p>Fields marked * are required.</p></div>
+<label>Product name *<input id="product-name" maxlength="90" placeholder="e.g. Hand-thrown stoneware vase" required=""/></label>
+<div class="form-two"><label>Craft type *<select id="product-category" required=""><option value="Pottery">Pottery &amp; ceramics</option><option value="Textiles">Textiles &amp; weaving</option><option value="Jewellery">Jewellery</option><option value="Home Decor">Home décor</option><option value="Bags">Bags &amp; accessories</option><option value="Art">Art &amp; stationery</option><option value="Other">Others</option></select></label><label>Price (₹) *<input id="product-price" max="1000000" min="1" placeholder="850" required="" type="number"/></label></div>
+<div class="form-two"><label>Stock quantity *<input id="product-stock" max="100000" min="0" required="" type="number" value="5"/></label><label>Listing status<select id="product-status"><option value="Active">Active</option><option value="Draft">Draft</option></select></label></div>
+<label>Artisan / studio name<input id="product-artisan" maxlength="70" placeholder="Uses your profile name when blank"/></label>
+<label>Product description<textarea id="product-description" maxlength="400" placeholder="Materials, process, size, or story behind this piece" rows="3"></textarea></label>
+<label>Product image<input accept="image/*" id="product-image" type="file"/><span class="input-hint">JPG, PNG or WebP · up to 2 MB</span></label>
+<div class="image-preview-wrap" hidden="" id="image-preview-wrap"><img alt="Selected product preview" class="image-preview" id="image-preview"/><span>Image preview</span></div>
+<div class="form-actions"><button class="button button-dark form-submit" id="product-submit" type="submit">Add to collection <span>↗</span></button><button class="button button-outline" hidden="" id="cancel-edit" type="button">Cancel edit</button></div><p class="form-message" id="form-message" role="status"></p>
+</form>
+</div>
+
+</section>
+<section class="ai-workspace section-pad" id="ai-workspace">
+<div class="section-heading"><div><p class="eyebrow">KALANOVA BUSINESS COPILOT</p><h2>Thoughtful tools for <em>every maker.</em></h2><p class="muted">Prepare product imagery, create catalogue details, and plan prices from your real costs.</p></div></div>
+<div class="ai-tools-grid">
+<article class="ai-tool-card" id="ai-studio">
+<div class="ai-tool-icon">✧</div><p class="eyebrow">01 · IMAGE STUDIO</p><h3>Give your craft the spotlight.</h3><p class="muted">Upload a product photo, preview it, and try lighting and contrast treatments before saving it.</p>
+<label class="ai-upload">Choose product image<input accept="image/*" id="studio-image-input" type="file"/><span>JPG, PNG or WebP · up to 5 MB</span></label>
+<div class="studio-image-stage" id="studio-image-stage"><button type="button" class="studio-image-clear" id="studio-image-clear" aria-label="Remove uploaded image" title="Remove image" hidden>×</button><span id="studio-image-placeholder-icon">✳</span><p id="studio-image-placeholder-text">Your product image will appear here</p><img alt="Product image preview" hidden="" id="studio-image-preview"/></div>
+<div class="studio-adjustments"><label>Professional background<select id="studio-background"><option value="warm">Warm ivory studio</option><option value="white">Clean white studio</option><option value="sage">Soft sage studio</option><option value="sand">Natural sand studio</option><option value="charcoal">Premium charcoal studio</option></select></label><label>Image treatment<select id="studio-treatment"><option value="none">Natural</option><option value="bright">Brighter lighting</option><option value="contrast">Enhanced contrast</option><option value="warm">Warm heritage tone</option></select></label><button class="button button-dark" disabled="" id="studio-remove-background" type="button">Remove background &amp; style</button><button class="button button-outline" disabled="" id="studio-use-image" type="button">Use for product listing</button><a class="button button-outline" hidden id="studio-download-image" download="kalanova-professional-product.png">Download edited image</a></div>
+<p class="ai-note" id="studio-status" role="status">Background removal runs in your browser using an AI model and may download model files the first time. Use a modern browser and internet connection.</p>
+</article>
+<article class="ai-tool-card" id="smart-catalogue">
+<div class="ai-tool-icon">▤</div><p class="eyebrow">02 · SMART CATALOGUING</p><h3>Turn your story into a listing.</h3><p class="muted">Describe your craft in your own words. Build an editable title, description, category, and search tags.</p>
+<label>Your product details or voice-transcribed notes<textarea id="catalogue-notes" placeholder="Type in any Indian language, or use Speak to dictate product details…" rows="3" lang="mul" autocomplete="off"></textarea><span class="input-hint">You can type in any language. Choose the language below for voice input. Drafts keep your original wording.</span></label>
+<div class="form-two"><label>Input / voice language<select id="catalogue-language"><option value="en">English</option><option value="as">Assamese</option><option value="bn">Bengali</option><option value="brx">Bodo</option><option value="doi">Dogri</option><option value="gu">Gujarati</option><option value="hi">Hindi</option><option value="kn">Kannada</option><option value="ks">Kashmiri</option><option value="kok">Konkani</option><option value="mai">Maithili</option><option value="ml">Malayalam</option><option value="mni">Manipuri (Meitei)</option><option value="mr">Marathi</option><option value="ne">Nepali</option><option value="or">Odia</option><option value="pa">Punjabi</option><option value="sa">Sanskrit</option><option value="sat">Santali</option><option value="sd">Sindhi</option><option value="ta">Tamil</option><option value="te">Telugu</option><option value="ur">Urdu</option></select></label><label>Category<select id="catalogue-category"><option>Pottery</option><option>Textiles</option><option>Jewellery</option><option>Home Decor</option><option>Bags</option><option>Art</option><option value="Other">Others</option></select></label></div>
+<div class="catalogue-actions"><button class="button button-dark" id="catalogue-generate" type="button">Create catalogue draft ↗</button><button class="button button-outline" id="catalogue-voice" type="button">🎙 Speak</button></div><p class="form-message" id="catalogue-status" role="status"></p>
+<div class="catalogue-output" hidden="" id="catalogue-output"><label>Suggested title<input id="catalogue-title" maxlength="90"/></label><label>Original-language description<textarea id="catalogue-description" maxlength="400" rows="4"></textarea></label><label>Translated English details (editable)<textarea id="catalogue-translated" maxlength="700" rows="4" placeholder="Translated product details will appear here."></textarea></label><label>Professional product description (editable)<textarea id="catalogue-professional-description" maxlength="700" rows="5" placeholder="A polished, customer-facing product description will appear here."></textarea></label><p class="ai-note">Translation is requested from an online translation service. Review names, materials, sizes, and cultural details before publishing.</p><label>Search tags<input id="catalogue-tags" placeholder="handmade, traditional, craft"/></label><button class="button button-outline" id="catalogue-fill-form" type="button">Use in product form</button></div>
+<p class="ai-note">Enter details in a supported Indian language, then create a draft to translate the text into English and prepare a polished customer-facing description. An internet connection is needed for translation.</p>
+</article>
+<article class="ai-tool-card" id="pricing-assistant">
+<div class="ai-tool-icon">₹</div><p class="eyebrow">03 · PRICING &amp; DEMAND</p><h3>Price with confidence.</h3><p class="muted">Estimate a price from your costs and review a simple demand indicator. You remain in control of the final price.</p>
+<div class="form-two"><label>Materials cost (₹)<input id="price-materials" min="0" type="number" value="180"/></label><label>Labour cost (₹)<input id="price-labour" min="0" type="number" value="250"/></label></div>
+<div class="form-two"><label>Other costs (₹)<input id="price-other" min="0" type="number" value="70"/></label><label>Desired margin (%)<input id="price-margin" max="300" min="0" type="number" value="30"/></label></div>
+<div class="pricing-result"><span>Suggested starting price</span><strong id="price-suggestion">₹715</strong><small id="price-explanation">Based on the costs and margin you entered.</small></div>
+<button class="button button-dark" id="price-calculate" type="button">Calculate price ↗</button>
+<div class="demand-panel"><label>Expected weekly interest <select id="demand-level"><option value="low">Low</option><option selected="" value="medium">Moderate</option><option value="high">High</option></select></label><div class="demand-meter"><span id="demand-meter-fill"></span></div><p id="demand-explanation">Moderate interest selected. Treat this as a planning assumption until sales data is available.</p></div>
+<button class="button button-outline" id="price-use-product" type="button">Use price in product form</button>
+<p class="ai-note">Price is a cost-plus estimate, not a market prediction. Reliable demand forecasting requires actual sales, views, seasonality, and regional market data.</p>
+</article>
+</div>
+</section><section class="inventory-section section-pad" id="inventory-management"><div class="section-heading"><div><p class="eyebrow">INVENTORY MANAGEMENT</p><h2>Manage your <em>collection.</em></h2><p class="muted">Review your listings, update quantities, and keep every handmade piece organised.</p></div></div><div class="my-listings"><div class="listings-heading"><div><h3>Your product listings</h3></div><span id="listing-subtitle">No listings yet</span></div><div class="inventory-toolbar"><label>Find a listing<input id="inventory-search" placeholder="Search your products..." type="search"/></label><label>Show<select id="inventory-filter"><option value="all">All listings</option><option value="Active">Active</option><option value="Draft">Draft</option><option value="low">Low stock (5 or fewer)</option><option value="out">Out of stock</option></select></label></div><div class="inventory-list" id="my-products"></div>
+</div></section>
+</main>
+<footer class="site-footer"><a class="brand brand-footer" href="index.html#home"><img src="assets/kalanova-logo.png" alt="KalaNova — Made by Hand"/></a><p>Crafted stories. Made to last.</p><div><a href="index.html#shop">Explore</a><a href="index.html#stories">Artisans</a><a href="index.html#join">Join KalaNova</a></div><small>© 2026 KalaNova · Crafted stories, made to last</small></footer>
+<div aria-atomic="true" aria-live="polite" class="toast-region" id="toast-region"></div>
+<div class="drawer-backdrop" hidden="" id="drawer-backdrop"></div>
+<aside aria-hidden="true" aria-label="Shopping panel" class="side-drawer" id="side-drawer">
+<div class="drawer-header"><div><p class="eyebrow">YOUR KALANOVA</p><h2 id="drawer-title">Your bag</h2></div><button aria-label="Close panel" class="drawer-close" id="close-drawer">×</button></div>
+<div class="drawer-content" id="drawer-content"></div>
+</aside>
+<dialog class="checkout-dialog" id="checkout-dialog"><form method="dialog"><button aria-label="Close" class="drawer-close dialog-close">×</button><p class="eyebrow">A LITTLE SOMETHING FOR YOU</p><h2>Ready to make it yours?</h2><p>This checkout screen does not process payments. Your order will not be submitted.</p><div id="checkout-summary"></div><label class="checkout-label">Name<input id="checkout-name" placeholder="Your name" required=""/></label><label class="checkout-label">Email<input id="checkout-email" placeholder="you@example.com" required="" type="email"/></label><button class="button button-dark checkout-submit" id="place-order" value="confirm">Place order</button></form></dialog>
+</body>
+</html>
